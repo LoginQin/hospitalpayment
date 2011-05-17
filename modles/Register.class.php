@@ -9,7 +9,8 @@ class Register extends Db_Table {
 		'price' => 'float',
 		'time' => 'string',
 		'user_id' => 'int',
-		'username' => 'string'
+		'username' => 'string',
+		'state' => 'int'
 	);
 
 	function __construct() {

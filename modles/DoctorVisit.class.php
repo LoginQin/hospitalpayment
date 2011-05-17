@@ -34,7 +34,6 @@ class DoctorVisit extends Db_Table {
 	}
 
 	function insertDoctorVisit($data) {
-		if(isset($data['id'])) unset($data['id']);
 		return $this->insert($data);
 	}
 

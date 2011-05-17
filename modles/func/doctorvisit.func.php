@@ -25,7 +25,6 @@ function getAllDoctorVisit() {
 
 function insertDoctorVisit($data) {
 	$dv = new DoctorVisit();
-	if(isset($data['id'])) unset($data['id']);
 	return $dv->insertDoctorVisit($data);
 }
 

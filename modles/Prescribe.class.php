@@ -43,7 +43,6 @@ class Prescribe extends Db_Table {
 	}
 
 	function insertPrescribe($data) {
-		if(isset($data['id'])) unset($data['id']);
 		return $this->insert($data);
 	}
 

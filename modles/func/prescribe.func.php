@@ -25,7 +25,6 @@ function getAllPrescribe() {
 
 function insertPrescribe($data) {
 	$pre = new Prescribe();
-	if(isset($data['id'])) unset($data['id']);
 	return $pre->insertPrescribe($data);
 }
 

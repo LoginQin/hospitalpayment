@@ -41,6 +41,12 @@ function updateDoctor($data) {
 	
 }
 
+function getDoctorBy__($arr_where, $limit = '', $order ='') {
+	$tb = new Doctor();
+	$userdata = $tb->getDoctorBy__($arr_where, $limit, $order);
+	return $userdata ? $userdata : array();
+}
+
 
 
 ?>
