@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>系统登陆</title>
+<script type="text/javascript" language="javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+$('#login').click(function(){
+	if(document.getElementById("dc").checked == true){
+	document.getElementById("form1").action="{action_url:doctor}";
+		}else if(document.getElementById("ad").checked == true){
+		document.getElementById("form1").action="#";
+	}
+	document.form1.submit();
+	});	
+})
+</script>
+<style type="text/css">
+	<!--
+	*{ padding:0; margin:0;}
+	body{ 
+		font-family:"微软雅黑", Arial, "MS Sans Serif", System;
+		background:#fff;}
+
+	#loginArea{
+		height:220px;
+		width:350px;
+		padding-left:80px;
+		padding-top:20px;
+		margin:0 auto;
+		margin-top: 80px;
+		font-size:14px;
+		font-weight:bold;
+		border:1px dashed blue;
+	}
+
+	label{
+		margin-right:20px;}
+	.input{
+		height:20px;
+		width:170px;
+		padding-left:10px;
+		padding-top:2px;
+	}
+	span{
+		margin-left:14px;}
+	#login{
+		height:22px;
+		width:100px;
+		text-align:center;
+		font-weight:bold;
+		margin-left:150px;
+		margin-top:30px;}
+	#loginArea div{
+		margin:10px 0 5px 130px;
+	}
+
+	#copyright {
+		text-align:center;
+		margin-top: 100px;
+	}
+	-->
+</style>
+</head>
+<body align="center">
+	<div id="loginArea">
+		<h2 style="margin-left:80px  ">系统登陆</h2>
+		<form name="form1" method="post" action="#" id="form1">
+			<br/>
+			用户名：<input class="input" name="username" type="text" />        <br/><br/>
+			<span>密码：</span><input class="input" name="password" type="password" />        <br/>
+			<div>
+				<label for="dc"><input checked="checked" id="dc" type="radio" name="c">医务人员</label>
+				<label for="ad"><input id="ad" type="radio" name="c">管理员</label><br/>
+			</div>
+			<button id="login" type="submit">登&nbsp;录</button>
+		</form>
+	</div>
+	<div id="copyright" >旋 风</div>
+</body>
+</html>
+
