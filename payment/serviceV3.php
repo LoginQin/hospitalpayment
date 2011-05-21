@@ -26,7 +26,7 @@ $output = array('return' => 'tns:Patient'); //自定义结构用 tns: 区别
 $webserver->qRegisterMethod('getPatientById' , $input, $output, $namespace, '根据id获取的病人信息'); // 注册公开函数
 
 $input = array();
-$output = array('return' => 'tns: PatientArray'); //返回的是Patient数组，为了方便，这里将语法规定这么写: [ObjectName]Array
+$output = array('return' => 'tns:PatientArray'); //返回的是Patient数组，为了方便，这里将语法规定这么写: [ObjectName]Array
 $webserver->qRegisterMethod('getAllPatient', $input, $output, $namespace, '获取所有病人信息');
 
 $input = array('data' => 'tns:Patient');

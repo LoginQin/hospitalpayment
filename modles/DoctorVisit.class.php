@@ -7,7 +7,8 @@ class DoctorVisit extends Db_Table {
 		'doctor_id' => 'int',
 		'name' => 'string',
 		'illness' =>'string',
-		'prescription_id' =>'int'
+		'prescription_id' =>'int',
+		'time' => 'string'
 	);
 
 	function __construct() {
@@ -48,6 +49,15 @@ class DoctorVisit extends Db_Table {
 		$result = $this->update($data, $where);
 		return $result;
 
+	}
+
+	function getDoctorVisitBy__($arr_where, $limit = '', $order ='') {
+		$result = $this->getRowBy__($arr_where, $limit , $order );
+		if($result) {
+			return $result;
+		}else {
+			return array();
+		}
 	}
 
 

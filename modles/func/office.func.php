@@ -42,5 +42,11 @@ function updateOffice($data) {
 	
 }
 
+function getOfficeByDoctorId($doctor_id) {
+	$tb = new Office();
+	$data = $tb->getOfficeByDoctorId($doctor_id);
+	return $data ? $data : array();
+}
+
 
 ?>

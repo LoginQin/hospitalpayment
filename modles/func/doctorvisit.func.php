@@ -41,6 +41,12 @@ function updateDoctorVisit($data) {
 	
 }
 
+function getDoctorVisitBy__($arr_where, $limit = '', $order ='') {
+	$tb = new DoctorVisit();
+	$data = $tb->getDoctorVisitBy__($arr_where, $limit, $order);
+	return $data ? $data : array();
+}
+
 
 
 ?>

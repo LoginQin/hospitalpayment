@@ -59,6 +59,8 @@ class Prescribe extends Db_Table {
 
 	}
 
+
+
 }
 
 ?>

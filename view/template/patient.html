@@ -1,0 +1,42 @@
+<form action="doPrescribe.php" method="POST" id="form_add" >
+<table id="table_add" width="386" border="1">
+  <tr>
+    <td width="50" height="30">姓名</td>
+	<td width="50">{label:name}</td>
+    <td width="50">性别</td>
+	<td width="50">{label:gender}</td>
+    <td width="50">年龄</td>
+	<td width="50">{label:age}</td>
+  </tr>
+  <tr>
+    <td height="50">最后挂号时间</td>
+	<td colspan="3">{label:register_time}</td>
+	<td height="50">本次挂号状态</td>
+	<td height="50">{label:register_state}</td>
+</tr>
+
+{table:diacrisis_history}
+
+
+
+<tr>
+	<td colspan="6"><h2 style="color:blue; margin:10px 0; " >请在下列输入您要做出的诊断：</h2></td>
+</tr>
+  <tr>
+    <td height="50">病症</td>
+    <td colspan="5"><label>
+			<textarea name="illness" id="illness" cols="45" rows="5">{label:illness}</textarea>
+    </label></td>
+  </tr>
+  <tr>
+    <td height="50">处方</td>
+    <td colspan="5"><label>
+			<textarea name="prescribe" id="prescribe" cols="45" rows="5">{label:prescribe}</textarea>
+    </label></td>
+  </tr>
+</table>
+<input name="patient_id" type="hidden" value="{label:patient_id}" />
+<input id="btn_submit" type="submit" value="确认并提交" />
+
+</form>
+

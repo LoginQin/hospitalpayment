@@ -41,4 +41,11 @@ function updatePrescribe($data) {
 	
 }
 
+function getPrescribeBy__($arr_where, $limit = '', $order ='') {
+	$tb = new Prescribe();
+	$userdata = $tb->getPrescribeBy__($arr_where, $limit, $order);
+	return $userdata ? $userdata : array();
+}
+
+
 ?>

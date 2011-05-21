@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{label:title}</title>
+		<script type="text/javascript" language="javascript" src="../js/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+					$('#btn_search').click(function(){
+						var p_id;
+						p_id = $("#form1 input:text").val();
+						$.post("{action_url:patient_data}", { patient_id : p_id}, function(data){
+							$('#add_data').html(data);
+							});
+						});	
+					});
+
+		</script>
+		<style type="text/css">
+			<!--
+			*{ padding:0; margin:0;}
+			body{ 
+				font-family:"微软雅黑", Arial, "MS Sans Serif", System;
+				background:#fff;
+				text-align:center;
+			}
+
+			h2{
+				text-align:center;
+			}
+
+			#content{
+				margin:0 auto;
+				width:950px;
+				padding-top:20px;
+				padding-left:10px;
+				padding-bottom:20px;
+				margin-top:5px;
+				border :1px dashed blue;
+			}
+			#add_data{
+				height:auto;
+				width:950px;
+				padding-left:10px;
+				padding-top:20px;
+				padding-bottom:30px;
+				margin:0 auto;
+				margin-top: 10px;
+				font-size:14px;
+				font-weight:bold;
+				border:1px dashed blue;
+				text-align: center;
+			}
+			#head{
+				margin-top:20px;
+				margin-left:600px;
+			}
+			#table_add{
+				width:650px;
+				margin-left:150px;
+				border:1px ;
+			}
+			#illness{
+				width:600px;
+			}
+			#prescribe{
+				width:600px;
+			}
+
+			#btn_submit{
+				margin:10px 10px;
+				width:200px;
+				height:30px;
+				font-size:20px;
+			}
+
+
+
+			-->
+		</style>
+	</head>
+	<body>
+		<div id="head">欢迎您：{label:username} ----- <a href="signout.php">退 出</a></div>
+		<div id="menu">
+
+		</div>
+		<div id="content">
+			<h2> 诊断窗口 </h2>
+			</br>
+			<form action="#" method="POST" id="form1" >
+				请输入病人ID : <input type="text" name="patient_id"  /><input type="button" id="btn_search" value="查 询" />
+			</form>
+		</div>
+
+		<div id="add_data">
+
+		</div>
+
+	</body>
+</html>
+

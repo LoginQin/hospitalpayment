@@ -22,9 +22,9 @@ class Db_Table {
 	}
 
 	public function getAllRows(){
+		$result = array();
 		$sql = 'SELECT * FROM `'.$this->table.'`';
-		$result = $this->db->query($sql);
-		$result = $this->db->fetch_array($result);
+		$this->db->fetch_all($sql, $result);
 		return $result;
 	}
 
@@ -47,9 +47,11 @@ class Db_Table {
 		return $this->db->insert($this->table, $data);
 	}
 
-	//	protected function runSQL($sql) {
-	//		 return $this->db->query($sql);
-	//	}
+	public function fetch_array($sql) {
+		$result =  $this->db->query($sql);
+		$result = $this->db->fetch_array($result);
+		return $result;
+	}
 
 	/**
 	 * arr_where use like bellow:
@@ -89,7 +91,7 @@ class Db_Table {
 					}else if(stristr($value, 'LIKE ')) {
 						$like = stristr($value, 'LIKE');
 						$where = '`'.$col.'`'.' '.$like;
-					
+
 					}else {
 						$where = '`'.$col.'`'.' = \''.$value."'";
 					}
@@ -100,8 +102,13 @@ class Db_Table {
 		}
 
 		$sql = 'SELECT * FROM `'.$this->table.'`'." WHERE $where $limit $order";
-		$result = $this->db->query($sql);
-		$result = $this->db->fetch_array($result);
+		$result = array();
+		if($limit) {
+			$result = $this->db->query($sql);
+			$result = $this->db->fetch_array($result);
+		} else {
+			$this->db->fetch_all($sql, $result);
+		}
 		return $result;
 
 	}

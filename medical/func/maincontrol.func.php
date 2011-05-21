@@ -15,9 +15,18 @@ function signOUT() {
 	return $main->signOUT();
 }
 
-function insertIllnessByPatientId($patient_id, $illness , $medicine) {
+function insertIllnessByPatientId($patient_id, $doctor_id, $illness , $medicine) {
 	$main = new MainControl();
-	return $this->insertIllnessByPatientId($patient_id, $illness , $medicine);
+	return $main->insertIllnessByPatientId($patient_id, $doctor_id, $illness , $medicine);
+}
+
+function getPatientDataById($patient_id) {
+	$main = new MainControl();
+	return $main->getPatientDataById($patient_id);
+}
+function getHistoryDiacrisis($patient_id) {
+	$main = new MainControl();
+	return $main->getHistoryDiacrisis($patient_id);
 }
 
 ?>

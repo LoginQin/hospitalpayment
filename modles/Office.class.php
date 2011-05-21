@@ -49,6 +49,14 @@ class Office extends Db_Table {
 
 	}
 
+	function getOfficeByDoctorId($doctor_id) {
+		$sql = "SELECT o.id, o.name, o.category FROM `offices` AS o, `doctors` AS d 
+			WHERE o.id = d.office_id AND d.id = $doctor_id";
+		$result = $this->fetch_array($sql);
+		return $result ? $result : array();
+
+	}
+
 
 
 }
