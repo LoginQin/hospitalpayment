@@ -13,7 +13,9 @@ if ($err) {
 // Create the proxy
 $proxy = $client->getProxy();
  echo $proxy->signIN('Login', '123');
-echo $proxy->registerNewPatient('AAAA','男', 25, '');
+//echo $proxy->registerNewPatient('AAAA','男', 25, '');
+//print_r($proxy->getAllMedicine());
+print_r($proxy->getRegisterByPatientId(10072));
 // Call the SOAP method
 //$result = $proxy->getUserById(1);
 //$result2 = $proxy->getUserById(2);

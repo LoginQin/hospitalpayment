@@ -15,7 +15,7 @@ function getOfficeById($id) {
 function getAllOffice() {
 	$offic = new Office();
 	$offics = array();
-	$offics[] = $offic->getAllOffice();
+	$offics = $offic->getAllOffice();
 	if($offics) {
 		return $offics;
 	} else {

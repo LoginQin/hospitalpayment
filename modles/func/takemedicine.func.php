@@ -15,7 +15,7 @@ function getTakeMedicineById($id) {
 function getAllTakeMedicine() {
 	$takem = new TakeMedicine();
 	$takems = array();
-	$takems[] = $takem->getAllTakeMedicine();
+	$takems = $takem->getAllTakeMedicine();
 	if($takems) {
 		return $takems;
 	} else {

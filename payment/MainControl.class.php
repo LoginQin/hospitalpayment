@@ -5,6 +5,7 @@ include_once MODLES_PATH.'/func/patient.func.php';
 include_once MODLES_PATH.'/func/tariff.func.php';
 include_once MODLES_PATH.'/func/register.func.php';
 include_once MODLES_PATH.'/func/bill.func.php';
+include_once MODLES_PATH.'/func/medicine.func.php';
 class MainControl {
 
 	function __construct() {
@@ -36,12 +37,8 @@ class MainControl {
 	}
 
 	function signOUT() { // 退出
-		if(isset($_SESSION['username'])) {
-			unset($_SESSION);
-			return 1;
-		} else {
-			return 0;
-		}
+		session_unset();
+		return 1;
 	}
 
 	function registerNewPatient($name, $gender, $age, $illness = '' ) { //挂号, 填写病人相关信息。（为新病人挂号）
@@ -133,6 +130,7 @@ class MainControl {
 
 		return $step; // 如果返回值=5，表示挂号成功。
 	}
+	
 }
 
 

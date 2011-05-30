@@ -23,7 +23,7 @@ class Office extends Db_Table {
 
 	function getAllOffice() {
 		$tbs = array();
-		$tbs[] = $this->getAllRows();
+		$tbs = $this->getAllRows();
 		if($tbs) {
 			return $tbs;
 		} else {

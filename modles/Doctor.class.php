@@ -26,7 +26,7 @@ class Doctor extends Db_Table {
 
 	function getAllDoctor() {
 		$tbs = array();
-		$tbs[] = $this->getAllRows();
+		$tbs = $this->getAllRows();
 		if($tbs) {
 			return $tbs;
 		} else {

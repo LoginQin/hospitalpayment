@@ -28,7 +28,7 @@ class Register extends Db_Table {
 
 	function getAllRegister() {
 		$tbs = array();
-		$tbs[] = $this->getAllRows();
+		$tbs = $this->getAllRows();
 		if($tbs) {
 			return $tbs;
 		} else {
@@ -61,6 +61,12 @@ class Register extends Db_Table {
 		}else {
 			return array();
 		}
+	}
+
+	function  getRegisterByPatientId($patient_id ){
+		$arr_where = array('patient_id' => $patient_id);
+		$result = $this->getRowBy__($arr_where, $limit = 'LIMIT 1', $order = 'ORDER BY time DESC');
+		return $result ? $result : array();
 	}
 
 

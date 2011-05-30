@@ -15,7 +15,7 @@ function getTariffById($id) {
 function getAllTariff() {
 	$tar = new Tariff();
 	$tars = array();
-	$tars[] = $tar->getAllTariff();
+	$tars = $tar->getAllTariff();
 	if($tars) {
 		return $tars;
 	} else {

@@ -34,7 +34,7 @@ class Prescribe extends Db_Table {
 
 	function getAllPrescribe() {
 		$tbs = array();
-		$tbs[] = $this->getAllRows();
+		$tbs = $this->getAllRows();
 		if($tbs) {
 			return $tbs;
 		} else {

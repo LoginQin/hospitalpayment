@@ -15,7 +15,7 @@ function getRegisterById($id) {
 function getAllRegister() {
 	$reg = new Register();
 	$regs = array();
-	$regs[] = $reg->getAllRegister();
+	$regs = $reg->getAllRegister();
 	if($regs) {
 		return $regs;
 	} else {
@@ -46,6 +46,13 @@ function getRegisterBy__($arr_where, $limit = '', $order ='') {
 	$tb = new Register();
 	$userdata = $tb->getRegisterBy__($arr_where, $limit, $order);
 	return $userdata ? $userdata : array();
+}
+
+function getRegisterByPatientId($patient_id) {
+	$tb = new Register();
+	$data = $tb-> getRegisterByPatientId($patient_id);
+	return $data ? $data : array();
+		
 }
 
 

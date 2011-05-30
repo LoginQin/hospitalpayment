@@ -15,7 +15,7 @@ function getPrescribeById($id) {
 function getAllPrescribe() {
 	$pre = new Prescribe();
 	$pres = array();
-	$pres[] = $pre->getAllPrescribe();
+	$pres = $pre->getAllPrescribe();
 	if($pres) {
 		return $pres;
 	} else {

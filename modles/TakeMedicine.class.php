@@ -24,7 +24,7 @@ class TakeMedicine extends Db_Table {
 
 	function getAllTakeMedicine() {
 		$tbs = array();
-		$tbs[] = $this->getAllRows();
+		$tbs = $this->getAllRows();
 		if($tbs) {
 			return $tbs;
 		} else {

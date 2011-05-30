@@ -15,7 +15,7 @@ function getDoctorVisitById($id) {
 function getAllDoctorVisit() {
 	$dv = new DoctorVisit();
 	$dvs = array();
-	$dvs[] = $dv->getAllDoctorVisit();
+	$dvs = $dv->getAllDoctorVisit();
 	if($dvs) {
 		return $dvs;
 	} else {

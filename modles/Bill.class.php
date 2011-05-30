@@ -28,7 +28,7 @@ class Bill extends Db_Table {
 
 	function getAllBill() {
 		$tbs = array();
-		$tbs[] = $this->getAllRows();
+		$tbs = $this->getAllRows();
 		if($tbs) {
 			return $tbs;
 		} else {

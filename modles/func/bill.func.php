@@ -15,7 +15,7 @@ function getBillById($id) {
 function getAllBill() {
 	$bill = new Bill();
 	$bills = array();
-	$bills[] = $bill->getAllBill();
+	$bills = $bill->getAllBill();
 	if($bills) {
 		return $bills;
 	} else {

@@ -21,7 +21,18 @@ $input = array('patient_id' => 'xsd:int');
 $output = array('return' => 'xsd:int');
 $webserver->qRegisterMethod('registerOldPatient', $input, $output, $namespace, '为旧病人挂号，不需要填写病人信息，输入病人id; 返回5为成功');
 
+$return_mapping = array('id' => 'int', 'name' => 'stirng', 'price' => 'float', 'remaining_count' => 'int');
+$webserver->createObjectMappingComplexType('Medicine', $return_mapping );
+$input = array();
+$output = array('return' => 'tns:MedicineArray');
+$webserver->qRegisterMethod('getAllMedicine', $input, $output, $namespace, '获取所有药物信息');
 
+$input = array('patient_id' => 'xsd:int');
+$register = new Register();
+$return_mapping = $register->getPropertyType();
+$webserver->createObjectMappingComplexType('Register', $return_mapping );
+$output = array('return' => 'tns:Register');
+$webserver->qRegisterMethod('getRegisterByPatientId', $input, $output, $namespace, '根据病人ID，获取最近的挂号单信息');
 
 $webserver->startServer();
 

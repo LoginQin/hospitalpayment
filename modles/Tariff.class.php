@@ -23,7 +23,7 @@ class Tariff extends Db_Table {
 
 	function getAllTariff() {
 		$tbs = array();
-		$tbs[] = $this->getAllRows();
+		$tbs = $this->getAllRows();
 		if($tbs) {
 			return $tbs;
 		} else {

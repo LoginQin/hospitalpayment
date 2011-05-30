@@ -33,7 +33,7 @@ class User extends Db_Table {
 
 	function getAllUser() {
 		$tbs = array();
-		$tbs[] = $this->getAllRows();
+		$tbs = $this->getAllRows();
 		if($tbs) {
 			return $tbs;
 		} else {

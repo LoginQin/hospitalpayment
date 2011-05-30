@@ -15,7 +15,7 @@ function getDoctorById($id) {
 function getAllDoctor() {
 	$doctor = new Doctor();
 	$doctors = array();
-	$doctors[] = $doctor->getAllDoctor();
+	$doctors = $doctor->getAllDoctor();
 	if($doctors) {
 		return $doctors;
 	} else {

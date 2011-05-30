@@ -17,7 +17,7 @@ function getPatientById($id) {
 function getAllPatient() {
 	$patient = new Patient();
 	$patients = array();
-	$patients[] = $patient->getAllRows();
+	$patients = $patient->getAllRows();
 	if($patients) {
 		return $patients;
 	} else {

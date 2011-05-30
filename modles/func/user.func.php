@@ -17,7 +17,7 @@ function getUserById($id) {
 function getAllUser() {
 	$user = new User;
 	$users = array();
-	$users[] = $user->getAllRows();
+	$users = $user->getAllRows();
 	if($users) {
 		return $users;
 	} else {

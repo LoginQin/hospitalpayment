@@ -15,7 +15,7 @@ function getMedicineById($id) {
 function getAllMedicine() {
 	$med = new Medicine();
 	$meds = array();
-	$meds[] = $med->getAllMedicine();
+	$meds = $med->getAllMedicine();
 	if($meds) {
 		return $meds;
 	} else {
