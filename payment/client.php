@@ -15,7 +15,8 @@ $proxy = $client->getProxy();
  echo $proxy->signIN('Login', '123');
 //echo $proxy->registerNewPatient('AAAA','男', 25, '');
 //print_r($proxy->getAllMedicine());
-print_r($proxy->getRegisterByPatientId(10072));
+print_r($proxy->getPatientById(10071));
+//print_r($proxy->getRegisterByPatientId(10069));
 // Call the SOAP method
 //$result = $proxy->getUserById(1);
 //$result2 = $proxy->getUserById(2);

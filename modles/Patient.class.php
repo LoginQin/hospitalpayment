@@ -3,10 +3,10 @@ include_once ('db_table.class.php');
 class Patient extends Db_Table {
 	var $table = 'patients';
 	var $property_type = array( //Because Use The WebService So Map the type
-		'id' => 'string',
+		'id' => 'int',
 		'name' => 'string',
-		'gender' =>'string',
-		'age' =>'int',
+		'gender' => 'string',
+		'age' => 'int',
 		'illness' => 'string'
 	);
 
