@@ -14,7 +14,7 @@ $patient = new Patient();
 $return_mapping = $patient->getPropertyType();
 $webserver->createObjectMappingComplexType('Patient', $return_mapping);
 
-$return_mapping = array('id' => 'int', 'name' => 'stirng', 'price' => 'float', 'remaining_count' => 'int');
+$return_mapping = array('id' => 'int', 'name' => 'string', 'price' => 'float', 'remaining_count' => 'int');
 $webserver->createObjectMappingComplexType('Medicine', $return_mapping );
 
 

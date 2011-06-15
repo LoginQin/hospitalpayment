@@ -10,7 +10,7 @@ $('#login').click(function(){
 	if(document.getElementById("dc").checked == true){
 	document.getElementById("form1").action="{action_url:doctor}";
 		}else if(document.getElementById("ad").checked == true){
-		document.getElementById("form1").action="#";
+		document.getElementById("form1").action="{action_url:admin}";
 	}
 	document.form1.submit();
 	});	

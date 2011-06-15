@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+/*index.php*/
+#homestyle{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-align: center;
+	background: #F9F9F9 url(../images/site_holder.gif) top center repeat-y;
+	font: 12px Verdana, Arial, Helvetica, sans-serif;
+}
+div#wrapper {
+margin: 0 auto;
+padding: 0;
+border: 0;
+width: 966px;
+text-align: left;
+}
+div#header_index {
+margin: 0 0 0 12px;
+padding: 0;
+border: 0;
+width: 937px;
+height: 100px;
+background: #D9D9D9;
+}
+div#logo{
+	margin: 0 0 0 0px;
+	padding:0;
+	border:0;
+	width: 420px;
+	height:100px;
+	background-image: url(../images/logo.gif);
+	float:left;
+}
+div#login_area{
+	width: 517px;
+	height: 95px;
+	float:right;
+	margin:5 0 0 0px;
+}
+div#login_area a{
+color:#000000;
+}
+div#show_choice{
+margin:0 0 0 12px;
+height:30px;
+width:937px;
+}
+div#iframe{
+margin:5 0 0 12px;
+padding: 0;
+border: 0;
+}
+td{
+width:88px;
+height:40px;
+}
+a,#show_choice a{
+color:#ACACAC;
+text-decoration: none;
+}
+#show_choice a:hover{
+color:#BB0000;
+font-size:17px;
+}
+#login_area a:hover{
+color:#BB0000;
+}

@@ -52,7 +52,12 @@ class Db_Table {
 		$result = $this->db->fetch_array($result);
 		return $result;
 	}
-
+	
+	public function fetch_all($sql) {
+		$result = array();
+		$this->db->fetch_all($sql, $result);
+		return $result ? $result : array();
+	}
 	/**
 	 * arr_where use like bellow:
 	 * $arr_where = array('id' => 1)  or array('username' => 'login')
@@ -101,7 +106,7 @@ class Db_Table {
 			}
 		}
 
-		$sql = 'SELECT * FROM `'.$this->table.'`'." WHERE $where $order $limit";
+		$sql = 'SELECT * FROM `'.$this->table.'`'." WHERE $where $limit $order";
 		$result = array();
 		if($limit) {
 			$result = $this->db->query($sql);
