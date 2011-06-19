@@ -106,7 +106,7 @@ class Db_Table {
 			}
 		}
 
-		$sql = 'SELECT * FROM `'.$this->table.'`'." WHERE $where $limit $order";
+		$sql = 'SELECT * FROM `'.$this->table.'`'." WHERE $where $order $limit";
 		$result = array();
 		if($limit) {
 			$result = $this->db->query($sql);

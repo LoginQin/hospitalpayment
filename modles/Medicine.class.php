@@ -49,9 +49,15 @@ class Medicine extends Db_Table {
 		return $result;
 
 	}
+	function getMedicineBy__($arr_where, $limit = '', $order ='') {
+			$result = $this->getRowBy__($arr_where, $limit , $order);
+			if($result) {
+					return $result;
+			}else {
+					return array();
+			}
 
-
-
+	}
 }
 
 ?>

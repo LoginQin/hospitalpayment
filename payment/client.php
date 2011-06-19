@@ -15,9 +15,15 @@ $proxy = $client->getProxy();
  echo $proxy->signIN('Login', '123');
 //echo $proxy->registerNewPatient('AAAA','男', 25, '');
 //print_r($proxy->getAllMedicine());
-print_r($proxy->getPatientById(10071));
+//print_r($proxy->getPatientById(10071));
 //print_r($proxy->getRegisterByPatientId(10069));
 // Call the SOAP method
+//print_r($proxy->getFinalBillByPatientId(10073));
+$medicine = array(
+		array('name' => '白加黑', 'count' => 10 ),
+		array('name' => '康泰克', 'count' => 20)
+);
+echo $proxy->recordTakeMedicineData(10073, $medicine);
 //$result = $proxy->getUserById(1);
 //$result2 = $proxy->getUserById(2);
 //print_r($result2);

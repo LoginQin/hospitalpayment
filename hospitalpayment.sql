@@ -2,10 +2,10 @@
 -- version 3.3.7
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 23, 2011 at 06:19 AM
--- Server version: 5.0.90
--- PHP Version: 5.2.14
+-- 主机: localhost
+-- 生成日期: 2011 年 06 月 19 日 09:26
+-- 服务器版本: 5.0.90
+-- PHP 版本: 5.2.14
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -16,20 +16,21 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `hospitalpayment`
+-- 数据库: `hospitalpayment`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bills`
+-- 表的结构 `bills`
 --
 
+DROP TABLE IF EXISTS `bills`;
 CREATE TABLE IF NOT EXISTS `bills` (
   `register_id` int(11) default NULL,
   `time` datetime default NULL,
   `patient_name` varchar(30) default NULL,
-  `toll_collector` smallint(6) default NULL,
+  `toll_collector` char(30) default NULL,
   `doctor_id` int(11) default NULL,
   `tariffs` varchar(100) default NULL COMMENT '收费项目id集',
   `total_price` float default NULL,
@@ -37,12 +38,18 @@ CREATE TABLE IF NOT EXISTS `bills` (
   KEY `register_id` (`register_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='收费票据表';
 
+--
+-- 转存表中的数据 `bills`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doctors`
+-- 表的结构 `doctors`
 --
 
+DROP TABLE IF EXISTS `doctors`;
 CREATE TABLE IF NOT EXISTS `doctors` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(30) default NULL,
@@ -56,12 +63,21 @@ CREATE TABLE IF NOT EXISTS `doctors` (
   KEY `FK_offic_doc` (`office_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
+--
+-- 转存表中的数据 `doctors`
+--
+
+INSERT INTO `doctors` (`id`, `name`, `duty`, `office_id`, `sign_name`, `password`) VALUES
+(2, 'login', NULL, 2, 'Login', '123'),
+(3, '韦医生', NULL, 3, 'wei', '123');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doctors_visiting`
+-- 表的结构 `doctors_visiting`
 --
 
+DROP TABLE IF EXISTS `doctors_visiting`;
 CREATE TABLE IF NOT EXISTS `doctors_visiting` (
   `id` int(11) default NULL COMMENT '挂号id',
   `doctor_id` int(11) default NULL,
@@ -73,12 +89,18 @@ CREATE TABLE IF NOT EXISTS `doctors_visiting` (
   KEY `FK_docvisiting_doc` (`doctor_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='就诊表';
 
+--
+-- 转存表中的数据 `doctors_visiting`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `medicines`
+-- 表的结构 `medicines`
 --
 
+DROP TABLE IF EXISTS `medicines`;
 CREATE TABLE IF NOT EXISTS `medicines` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(12) default NULL,
@@ -87,12 +109,21 @@ CREATE TABLE IF NOT EXISTS `medicines` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='药品信息' AUTO_INCREMENT=4 ;
 
+--
+-- 转存表中的数据 `medicines`
+--
+
+INSERT INTO `medicines` (`id`, `name`, `price`, `remaining_count`) VALUES
+(2, '白加黑', 45.8, 5642),
+(3, '康泰克', 25.5, 91862);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `offices`
+-- 表的结构 `offices`
 --
 
+DROP TABLE IF EXISTS `offices`;
 CREATE TABLE IF NOT EXISTS `offices` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(30) default NULL,
@@ -101,12 +132,22 @@ CREATE TABLE IF NOT EXISTS `offices` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='科室' AUTO_INCREMENT=5 ;
 
+--
+-- 转存表中的数据 `offices`
+--
+
+INSERT INTO `offices` (`id`, `name`, `category`) VALUES
+(2, '内科', NULL),
+(3, '外科', NULL),
+(4, '放射科', NULL);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `patients`
+-- 表的结构 `patients`
 --
 
+DROP TABLE IF EXISTS `patients`;
 CREATE TABLE IF NOT EXISTS `patients` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(30) NOT NULL,
@@ -114,14 +155,20 @@ CREATE TABLE IF NOT EXISTS `patients` (
   `age` smallint(6) unsigned NOT NULL COMMENT '年龄',
   `illness` text,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='病人表' AUTO_INCREMENT=10073 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='病人表' AUTO_INCREMENT=10075 ;
+
+--
+-- 转存表中的数据 `patients`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prescribes`
+-- 表的结构 `prescribes`
 --
 
+DROP TABLE IF EXISTS `prescribes`;
 CREATE TABLE IF NOT EXISTS `prescribes` (
   `id` int(11) NOT NULL auto_increment,
   `register_id` smallint(6) default NULL COMMENT '挂号ID',
@@ -129,14 +176,20 @@ CREATE TABLE IF NOT EXISTS `prescribes` (
   `doctor_name` varchar(30) default NULL COMMENT '医生姓名',
   `medicine` varchar(50) default NULL COMMENT '处方',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='处方表' AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='处方表' AUTO_INCREMENT=28 ;
+
+--
+-- 转存表中的数据 `prescribes`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `registers`
+-- 表的结构 `registers`
 --
 
+DROP TABLE IF EXISTS `registers`;
 CREATE TABLE IF NOT EXISTS `registers` (
   `id` int(11) NOT NULL auto_increment,
   `patient_id` int(11) default NULL COMMENT '挂号病人',
@@ -148,29 +201,41 @@ CREATE TABLE IF NOT EXISTS `registers` (
   `state` tinyint(3) unsigned NOT NULL COMMENT '状态0未处理1处理',
   PRIMARY KEY  (`id`),
   KEY `time` (`time`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='挂号表' AUTO_INCREMENT=47 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='挂号表' AUTO_INCREMENT=51 ;
+
+--
+-- 转存表中的数据 `registers`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `takemedicines`
+-- 表的结构 `takemedicines`
 --
 
+DROP TABLE IF EXISTS `takemedicines`;
 CREATE TABLE IF NOT EXISTS `takemedicines` (
   `id` int(11) NOT NULL auto_increment,
-  `prescribe_id` int(11) default NULL,
+  `register_id` int(11) default NULL,
   `name` varchar(12) character set utf8 default NULL,
   `count` int(11) default NULL,
   PRIMARY KEY  (`id`),
-  KEY `prescribe_id` (`prescribe_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=ucs2 COMMENT='取药表' AUTO_INCREMENT=2 ;
+  KEY `prescribe_id` (`register_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=ucs2 COMMENT='取药表' AUTO_INCREMENT=10 ;
+
+--
+-- 转存表中的数据 `takemedicines`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tariff`
+-- 表的结构 `tariff`
 --
 
+DROP TABLE IF EXISTS `tariff`;
 CREATE TABLE IF NOT EXISTS `tariff` (
   `id` int(11) NOT NULL auto_increment,
   `name` char(32) NOT NULL COMMENT '收费名称',
@@ -179,12 +244,21 @@ CREATE TABLE IF NOT EXISTS `tariff` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='收费价目表' AUTO_INCREMENT=4 ;
 
+--
+-- 转存表中的数据 `tariff`
+--
+
+INSERT INTO `tariff` (`id`, `name`, `price`) VALUES
+(2, '挂号', 50),
+(3, 'B超', 100);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- 表的结构 `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL auto_increment,
   `username` varchar(30) NOT NULL,
@@ -193,3 +267,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY  (`id`),
   KEY `username` (`username`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户表' AUTO_INCREMENT=10 ;
+
+--
+-- 转存表中的数据 `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `power`) VALUES
+(1, 'Login', '123', 2),
+(2, 'Qin', '123', 0);

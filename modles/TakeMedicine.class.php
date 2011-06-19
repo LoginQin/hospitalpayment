@@ -4,7 +4,7 @@ class TakeMedicine extends Db_Table {
 	var $table = 'takemedicines';
 	var $property_type = array( //Because Use The WebService So Map the type
 		'id' => 'int',
-		'prescribe_id' => 'int',
+		'register_id' => 'int',
 		'name' => 'string',
 		'count' =>'int'
 	);

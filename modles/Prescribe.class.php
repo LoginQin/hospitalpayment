@@ -24,7 +24,7 @@ class Prescribe extends Db_Table {
 	}
 
 	function getPrescribeBy__($arr_where, $limit = '', $order ='') {
-		$result = $this->getRowBy__($arr_where, $limit = '', $order ='');
+		$result = $this->getRowBy__($arr_where, $limit, $order);
 		if($result) {
 			return $result;
 		}else {

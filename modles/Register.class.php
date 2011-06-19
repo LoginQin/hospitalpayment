@@ -64,7 +64,7 @@ class Register extends Db_Table {
 	}
 
 	function  getRegisterByPatientId($patient_id ){
-		$arr_where = array('patient_id' => $patient_id , 'state' => 0 );
+		$arr_where = array('patient_id' => $patient_id );
 		$result = $this->getRowBy__($arr_where, $limit = 'LIMIT 1', $order = 'ORDER BY time DESC');
 		return $result ? $result : array();
 	}

@@ -44,7 +44,7 @@ class MainControl {
 
 	function insertIllnessByPatientId($patient_id, $doctor_id, $illness = '', $medicine = '') { 
 		$arr_where = array('patient_id' => $patient_id); //
-		$register = getRegisterBy__($arr_where, 'LIMIT 1'); //获取挂号信息
+		$register = getRegisterBy__($arr_where, 'LIMIT 1', 'ORDER BY time DESC'); //获取最近挂号信息
 		if(!$register) {
 			return -1; //病人没有挂号
 			die();
@@ -65,7 +65,7 @@ class MainControl {
 	function getPatientDataById($patient_id) {
 		$return = array();
 		$arr_where = array('patient_id' => $patient_id );
-		$register = getRegisterBy__($arr_where, 'LIMIT 1');
+		$register = getRegisterBy__($arr_where, 'LIMIT 1', 'ORDER BY time DESC'); //获取最近一次挂号信息
 		if(!$register) {
 			return array();
 			die();
