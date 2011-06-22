@@ -34,6 +34,8 @@ $post1 = isset($_POST['date2']) ? $_POST['date2'] : '';
 if(isdate($post)&&isdate($post1)&&(strtotime($post) <= strtotime($post1)))
 {
 	$result = $main->getpricebyregister($post,$post1);
+	//$date_result = $main->getpricebydate($post,$post1);
+	//$k = 0;
 	if(count($result) == 0) echo "<div align = 'center'>查无此类记录</div>";
 	else
 	{
@@ -42,6 +44,8 @@ if(isdate($post)&&isdate($post1)&&(strtotime($post) <= strtotime($post1)))
 				echo "<td bgcolor='#EAEAEA'>日期</td>";
 				echo "<td bgcolor='#EAEAEA'>总挂号费(元)</td>";
 				echo "<td bgcolor='#EAEAEA'>挂号人数(人)</td>";
+				//echo "<td bgcolor='#EAEAEA'>就诊总金额(元)</td>";
+				//echo "<td bgcolor='#EAEAEA'>就诊人数(人)</td>";
 				echo "<td bgcolor='#EAEAEA'>挂号费较首日比例</td>";
 				echo "<td bgcolor='#EAEAEA'>人数较首日比例</td>";
 				echo "<td bgcolor='#EAEAEA'>掉诊人数(人)</td>";
@@ -51,9 +55,19 @@ if(isdate($post)&&isdate($post1)&&(strtotime($post) <= strtotime($post1)))
 				{   
 					if($k1%2 != 0) echo "<tr bgcolor='#EFEFEF'>";
 					else echo "<tr>";
-					foreach($v1 as $v2)
+					foreach($v1 as $k2 => $v2)
 					{
-						echo "<td align='center'>".$v2."</td>";					
+						//if($k2 == 'price_contrast')
+						//{
+							//echo "<td align='center'>".$date_result[$k]['count(distinct id)']."</td>";
+							//echo "<td align='center'>".$date_result[$k]['total_price']."</td>";
+							//echo "<td align='center'>".$v2."</td>";
+						//}
+						//else
+						//{
+							echo "<td align='center'>".$v2."</td>";
+						//}
+						//$k2++;					
 					}
 					echo "</tr>";
 				}

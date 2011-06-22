@@ -22,9 +22,9 @@ function getpricebyregister($time,$time1){
 	$data = $tb->getpricebyregister($time,$time1);
 	return $data ? $data : array(); 
 }
-function getbillprice($time,$time1){
+function getpatientnum($time,$time1){
 	$tb = new statistics();
-	$data = $tb->getbillprice($time,$time1);
+	$data = $tb->getpatientnum($time,$time1);
 	return $data ? $data : array(); 
 }
 

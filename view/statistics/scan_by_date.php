@@ -40,10 +40,12 @@ if(isdate($post)&&isdate($post1)&&(strtotime($post) <= strtotime($post1)))
 		echo "<table align='center' bordercolor='#EAEAEA' border='1'>";
 			echo "<tr>";
 				echo "<td bgcolor='#EAEAEA'>日期</td>";
-				echo "<td bgcolor='#EAEAEA'>就诊人数(人)</td>";
 				echo "<td bgcolor='#EAEAEA'>日总收入(元)</td>";
-				echo "<td bgcolor='#EAEAEA'>人数较首日比例</td>";
+				echo "<td bgcolor='#EAEAEA'>就诊人数(人)</td>";
 				echo "<td bgcolor='#EAEAEA'>收入较首日比例</td>";
+				echo "<td bgcolor='#EAEAEA'>人数较首日比例</td>";
+				echo "<td bgcolor='#EAEAEA'>掉诊人数(人)</td>";
+				echo "<td bgcolor='#EAEAEA'>掉诊率</td>";
 			echo "</tr>"; 
 		foreach($result as $k1 =>$v1)
 		{   
