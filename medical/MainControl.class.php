@@ -96,7 +96,7 @@ class MainControl {
 		}
 
 		$arr_where = array('id' => $in);
-		$docv = getDoctorVisitBy__($arr_where);
+		$docv = getDoctorVisitBy__($arr_where, '', 'ORDER BY time ASC');
 		if(is_array($docv)) {
 			foreach($docv as $value) {
 				$return[$value['prescription_id']]['register_id'] = $value['id'];
