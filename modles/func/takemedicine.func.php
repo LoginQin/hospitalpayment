@@ -42,4 +42,10 @@ function updateTakeMedicine($data) {
 	
 }
 
+function getTakeMedicineBy__($arr_where, $limit = '', $order ='') {
+	$takem = new TakeMedicine();
+	$result = $takem->getTakeMedicineBy__($arr_where, $limit , $order );
+	return $result ? $result : array();
+}
+
 ?>

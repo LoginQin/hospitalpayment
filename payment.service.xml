@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="urn:payment" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:payment">
+<types>
+<xsd:schema targetNamespace="urn:payment"
+>
+ <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+ <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+ <xsd:complexType name="Register">
+  <xsd:sequence>
+   <xsd:element name="id" type="xsd:int"/>
+   <xsd:element name="patient_id" type="xsd:int"/>
+   <xsd:element name="patient_name" type="xsd:string"/>
+   <xsd:element name="price" type="xsd:float"/>
+   <xsd:element name="time" type="xsd:string"/>
+   <xsd:element name="user_id" type="xsd:int"/>
+   <xsd:element name="username" type="xsd:string"/>
+   <xsd:element name="state" type="xsd:int"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="RegisterArray">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:Register[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="Patient">
+  <xsd:sequence>
+   <xsd:element name="id" type="xsd:int"/>
+   <xsd:element name="name" type="xsd:string"/>
+   <xsd:element name="gender" type="xsd:string"/>
+   <xsd:element name="age" type="xsd:int"/>
+   <xsd:element name="illness" type="xsd:string"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="PatientArray">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:Patient[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="Medicine">
+  <xsd:sequence>
+   <xsd:element name="id" type="xsd:int"/>
+   <xsd:element name="name" type="xsd:string"/>
+   <xsd:element name="price" type="xsd:float"/>
+   <xsd:element name="remaining_count" type="xsd:int"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="MedicineArray">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:Medicine[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="Prescribe">
+  <xsd:sequence>
+   <xsd:element name="id" type="xsd:int"/>
+   <xsd:element name="register_id" type="xsd:int"/>
+   <xsd:element name="patient_name" type="xsd:string"/>
+   <xsd:element name="doctor_name" type="xsd:string"/>
+   <xsd:element name="medicine" type="xsd:string"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="PrescribeArray">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:Prescribe[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="Bill">
+  <xsd:sequence>
+   <xsd:element name="patient_id" type="xsd:int"/>
+   <xsd:element name="patient_name" type="xsd:string"/>
+   <xsd:element name="toll_collector" type="xsd:string"/>
+   <xsd:element name="register_time" type="xsd:string"/>
+   <xsd:element name="bill_time" type="xsd:string"/>
+   <xsd:element name="tariff" type="xsd:string"/>
+   <xsd:element name="total_price" type="xsd:float"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="BillArray">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:Bill[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="MedicineRecord">
+  <xsd:sequence>
+   <xsd:element name="name" type="xsd:string"/>
+   <xsd:element name="count" type="xsd:int"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="MedicineRecordArray">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:MedicineRecord[]"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+</xsd:schema>
+</types>
+<message name="signINRequest">
+  <part name="sign_name" type="xsd:string" />
+  <part name="password" type="xsd:string" /></message>
+<message name="signINResponse">
+  <part name="return" type="xsd:boolean" /></message>
+<message name="signOUTRequest"></message>
+<message name="signOUTResponse">
+  <part name="return" type="xsd:boolean" /></message>
+<message name="registerNewPatientRequest">
+  <part name="name" type="xsd:string" />
+  <part name="gender" type="xsd:string" />
+  <part name="age" type="xsd:int" />
+  <part name="illness" type="xsd:string" /></message>
+<message name="registerNewPatientResponse">
+  <part name="return" type="xsd:int" /></message>
+<message name="registerOldPatientRequest">
+  <part name="patient_id" type="xsd:int" /></message>
+<message name="registerOldPatientResponse">
+  <part name="return" type="xsd:int" /></message>
+<message name="getAllMedicineRequest"></message>
+<message name="getAllMedicineResponse">
+  <part name="return" type="tns:MedicineArray" /></message>
+<message name="getRegisterByPatientIdRequest">
+  <part name="patient_id" type="xsd:int" /></message>
+<message name="getRegisterByPatientIdResponse">
+  <part name="return" type="tns:Register" /></message>
+<message name="getPatientByIdRequest">
+  <part name="patient_id" type="xsd:int" /></message>
+<message name="getPatientByIdResponse">
+  <part name="return" type="tns:Patient" /></message>
+<message name="getPrescribeByPatientIdRequest">
+  <part name="patient_id" type="xsd:int" /></message>
+<message name="getPrescribeByPatientIdResponse">
+  <part name="return" type="tns:PrescribeArray" /></message>
+<message name="getFinalBillByPatientIdRequest">
+  <part name="patient_id" type="xsd:int" /></message>
+<message name="getFinalBillByPatientIdResponse">
+  <part name="return" type="tns:Bill" /></message>
+<message name="insertTotalMedicalPriceToBillRequest">
+  <part name="patient_id" type="xsd:int" />
+  <part name="total_medical_price" type="xsd:float" /></message>
+<message name="insertTotalMedicalPriceToBillResponse">
+  <part name="return" type="xsd:int" /></message>
+<message name="recordTakeMedicineDataRequest">
+  <part name="patient_id" type="xsd:int" />
+  <part name="medicine_record" type="tns:MedicineRecordArray" /></message>
+<message name="recordTakeMedicineDataResponse">
+  <part name="return" type="xsd:int" /></message>
+<portType name="paymentPortType">
+  <operation name="signIN">
+    <documentation>登陆；输入用户名，密码；返回boolean</documentation>
+    <input message="tns:signINRequest"/>
+    <output message="tns:signINResponse"/>
+  </operation>
+  <operation name="signOUT">
+    <documentation>退出，清空session：返回boolean</documentation>
+    <input message="tns:signOUTRequest"/>
+    <output message="tns:signOUTResponse"/>
+  </operation>
+  <operation name="registerNewPatient">
+    <documentation>为新病人挂号，输入相关信息，返回病人ID（大于0）为成功</documentation>
+    <input message="tns:registerNewPatientRequest"/>
+    <output message="tns:registerNewPatientResponse"/>
+  </operation>
+  <operation name="registerOldPatient">
+    <documentation>为旧病人挂号，不需要填写病人信息，输入病人id; 返回5为成功</documentation>
+    <input message="tns:registerOldPatientRequest"/>
+    <output message="tns:registerOldPatientResponse"/>
+  </operation>
+  <operation name="getAllMedicine">
+    <documentation>获取所有药物信息</documentation>
+    <input message="tns:getAllMedicineRequest"/>
+    <output message="tns:getAllMedicineResponse"/>
+  </operation>
+  <operation name="getRegisterByPatientId">
+    <documentation>根据病人ID，获取该病人刚挂号的挂号单信息，没有返回0，挂号单已处理也返回0,所以再次挂号才能获得挂号信息</documentation>
+    <input message="tns:getRegisterByPatientIdRequest"/>
+    <output message="tns:getRegisterByPatientIdResponse"/>
+  </operation>
+  <operation name="getPatientById">
+    <documentation>根据病人ID，获取病人信息</documentation>
+    <input message="tns:getPatientByIdRequest"/>
+    <output message="tns:getPatientByIdResponse"/>
+  </operation>
+  <operation name="getPrescribeByPatientId">
+    <documentation>根据病人ID，获取其最近挂号的处方信息，返回处方数组或者空</documentation>
+    <input message="tns:getPrescribeByPatientIdRequest"/>
+    <output message="tns:getPrescribeByPatientIdResponse"/>
+  </operation>
+  <operation name="getFinalBillByPatientId">
+    <documentation>根据病人ID获取最终的收费单信息</documentation>
+    <input message="tns:getFinalBillByPatientIdRequest"/>
+    <output message="tns:getFinalBillByPatientIdResponse"/>
+  </operation>
+  <operation name="insertTotalMedicalPriceToBill">
+    <documentation>根据病人ID，将药品总价加入收费单据，成功返回1，否则为0</documentation>
+    <input message="tns:insertTotalMedicalPriceToBillRequest"/>
+    <output message="tns:insertTotalMedicalPriceToBillResponse"/>
+  </operation>
+  <operation name="recordTakeMedicineData">
+    <documentation>根据病人ID，记录其取药信息，并更新药品剩余数量，如果取药数量大于药品剩余数量返回0，如果没有处方信息也返回0，成功返回1，需要参数：病人ID，药品记录数组</documentation>
+    <input message="tns:recordTakeMedicineDataRequest"/>
+    <output message="tns:recordTakeMedicineDataResponse"/>
+  </operation>
+</portType>
+<binding name="paymentBinding" type="tns:paymentPortType">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="signIN">
+    <soap:operation soapAction="urn:payment#signIN" style="rpc"/>
+    <input><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="signOUT">
+    <soap:operation soapAction="urn:payment#signOUT" style="rpc"/>
+    <input><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="registerNewPatient">
+    <soap:operation soapAction="urn:payment#registerNewPatient" style="rpc"/>
+    <input><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="registerOldPatient">
+    <soap:operation soapAction="urn:payment#registerOldPatient" style="rpc"/>
+    <input><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllMedicine">
+    <soap:operation soapAction="urn:payment#getAllMedicine" style="rpc"/>
+    <input><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getRegisterByPatientId">
+    <soap:operation soapAction="urn:payment#getRegisterByPatientId" style="rpc"/>
+    <input><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getPatientById">
+    <soap:operation soapAction="urn:payment#getPatientById" style="rpc"/>
+    <input><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getPrescribeByPatientId">
+    <soap:operation soapAction="urn:payment#getPrescribeByPatientId" style="rpc"/>
+    <input><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getFinalBillByPatientId">
+    <soap:operation soapAction="urn:payment#getFinalBillByPatientId" style="rpc"/>
+    <input><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="insertTotalMedicalPriceToBill">
+    <soap:operation soapAction="urn:payment#insertTotalMedicalPriceToBill" style="rpc"/>
+    <input><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="recordTakeMedicineData">
+    <soap:operation soapAction="urn:payment#recordTakeMedicineData" style="rpc"/>
+    <input><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="urn:payment" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+</binding>
+<service name="payment">
+  <port name="paymentPort" binding="tns:paymentBinding">
+    <soap:address location="http://127.0.0.1/hospitalpayment/payment/payment.service.php"/>
+  </port>
+</service>
+</definitions>

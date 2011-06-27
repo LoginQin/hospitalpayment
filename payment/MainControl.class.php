@@ -212,6 +212,7 @@ class MainControl {
 				$register = getRegisterByPatientId($patient_id);
 				$final_bill = array();
 				if($register) { 
+						$takemedicine = getTakeMedicineBy__(array('register_id' => $register['id']));
 						$bill = getBillById($register['id']);
 						$IN = 'IN('.$bill['tariffs'].')';
 						$tariff = getTariffBy__(array('id' => $IN ));
@@ -219,6 +220,11 @@ class MainControl {
 								$str_tariff ='';
 								foreach($tariff as  $value) {
 										$str_tariff .= ' | '.$value['name'].' : '. $value['price'].'元 ';
+								}
+								if(is_array($takemedicine)) {
+										foreach($takemedicine as $value) {
+										 	$str_tariff .= ' | '.$value['name'].' X'.$value['count'].' ';
+										}
 								}
 								$final_bill = array(
 										'patient_id' =>  $patient_id, 
@@ -238,6 +244,7 @@ class MainControl {
 
 
 }
+
 
 
 ?>
