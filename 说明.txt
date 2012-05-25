@@ -1,0 +1,26 @@
+医院收费系统说明：
+服务器配置：
+1.运行前请自行修改config.ini中相关配置，如数据库配置和WebService配置
+
+服务器运行需求：
+APACHE > 2.0.63
+PHP   >  5.2.14
+MYSQL > 5.0.90
+
+
+客户端配置
+1.请将收费业务逻辑接口描述文件payment.service.xml 放入D:\my documents\ 文件夹下（没有则自行创建），用记事本打开，并修改文件最底部的服务器地址 
+
+<soap:address location="http://127.0.0.1/hospitalpayment/payment/payment.service.php"/>
+
+将http://127.0.0.1/地址（或端口）修改为你的服务器地址和端口
+
+如：http://192.168.1.2:8080/
+
+运行要求：
+Windows系列系统
+
+注：本系统全部基于windows系统开发，PHP开发环境由 phpnow开发套件安装
+    客户端由Delphi2010开发
+
+           -------  旋风 @Login
